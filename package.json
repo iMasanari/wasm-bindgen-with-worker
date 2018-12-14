@@ -4,7 +4,7 @@
   "scripts": {
     "serve": "parcel src/index.html",
     "prebuild": "rimraf dist/",
-    "build": "parcel build src/index.html --no-source-maps",
+    "build": "parcel build src/index.html --public-url . --no-source-maps",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
