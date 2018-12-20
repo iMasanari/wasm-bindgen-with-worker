@@ -2,10 +2,11 @@
   "name": "wasm-bindgen-with-worker",
   "private": true,
   "scripts": {
-    "serve": "parcel src/index.html",
-    "prebuild": "rimraf dist/",
+    "dev": "parcel src/index.html",
+    "prebuild": "npm run clean",
     "build": "parcel build src/index.html --public-url . --no-source-maps",
     "predeploy": "npm run build",
+    "clean": "rimraf dist/",
     "deploy": "gh-pages -d dist"
   },
   "author": "iMasanari",
@@ -18,5 +19,8 @@
     "parcel-plugin-wasm.rs": "^1.2.6",
     "rimraf": "^2.6.2",
     "typescript": "^3.2.2"
-  }
+  },
+  "browserslist": [
+    "last 2 chrome versions"
+  ]
 }

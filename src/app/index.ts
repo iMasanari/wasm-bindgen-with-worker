@@ -1,12 +1,16 @@
-const worker = new Worker('./worker.ts')
+import wasmWorker from './wasmWorker'
+
+const worker = new Worker('../worker/index.ts')
+const action = wasmWorker<string, string>(worker)
 
 const input = document.getElementById('input') as HTMLInputElement
 const result = document.getElementById('result')!
 
-input.addEventListener('input', () => {
-  worker.postMessage(input.value)
-})
+const greed = async () => {
+  result.textContent = await action(input.value)
+}
 
-worker.addEventListener('message', ({ data }) => {
-  result.textContent = data.output
-})
+input.addEventListener('input', greed)
+
+// 初期処理
+greed()

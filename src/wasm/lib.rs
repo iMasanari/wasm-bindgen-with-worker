@@ -1,27 +1,20 @@
-#[macro_use]
-extern crate serde_derive;
-
 extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
-#[derive(Serialize, Deserialize)]
-struct Res {
-    input: String,
-    output: String,
+#[wasm_bindgen(module = "../../src/worker/wasm-util")]
+extern {
+    fn console_log(s: &str);
 }
 
 #[wasm_bindgen]
-pub fn greet(input: &str) -> JsValue {
+pub fn action(input: &str) -> String {
     let output = if input == "" {
         "".to_string()
     } else {
         format!("Hello, {}!", input)
     };
 
-    let result = Res {
-        input: input.to_string(),
-        output,
-    };
+    console_log(&output);
 
-    JsValue::from_serde(&result).unwrap()
+    output
 }
