@@ -1,7 +1,7 @@
 extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen(module = "../../src/worker/wasm-util")]
+#[wasm_bindgen(module = "/worker/wasm-util")]
 extern {
     fn console_log(s: &str);
 }

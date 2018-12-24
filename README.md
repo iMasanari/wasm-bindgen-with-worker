@@ -33,8 +33,9 @@ RustをWebWorkerから呼び出す場合、どちらのバンドラも少し工�
 
 #### parcelでの課題点
 
-- <s>Rust側からJavaScriptのコードが呼び出せない？（要検証）</s>
-  - 呼び出せた。ただし、parcelの絶対パス`~/`は使えず、相対パスは`node_modules/parcel-plugin-wasm.rs/`が基準。また、Worker内での実行のため、DOM操作はできない。
+- <s>Rust側からJavaScriptのコードが呼び出せない？（要検証）</s> 呼び出せた。
+  - ただし、相対パスは`node_modules/parcel-plugin-wasm.rs/`が基準
+  - Worker内での実行のため、DOM操作などはできない
 - Worker読み込み完了後〜wasm読み込み完了の間に処理が書けない
 - Tree Shaking（`--experimental-scope-hoisting`オプション）で実行時エラー
 
